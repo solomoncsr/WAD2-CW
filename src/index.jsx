@@ -12,7 +12,7 @@ import Course from './pages/courses/Course';
 import MyAccount from './pages/auth/MyAccount';
 import Login from './pages/auth/Login';
 import SignUp from './pages/auth/SignUp';
-import UserDetails from './pages/auth/UserDetails';
+import YourClasses from './pages/auth/YourClasses';
 import Admin from './pages/auth/Admin';
 
 const root = document.getElementById('root');
@@ -27,7 +27,7 @@ function App(props) {
   return (
     <div className="cover-container d-flex w-100 h-100 flex-column" style="z-index: 1500;">
     <header>
-      <nav class="navbar navbar-expand-sm bg-body-tertiary">
+      <nav class="navbar navbar-expand-sm bg-body-tertiary p-3">
         <div class="container-fluid">
           <span class="navbar-brand" href="#">Edinburgh School of Dance</span>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +75,7 @@ render(() => (
       <Route path="/" component={MyAccount} />
       <Route path="/login" component={Login} />
       <Route path="/sign-up" component={SignUp} />
-      <Route path="/details" component={UserDetails} />
+      <Route path="/details" component={YourClasses} />
       <Route path="/admin" component={Admin} />
     </Route>
     <Route path='*' component={() => <Navigate href={'/home'} />} />;
