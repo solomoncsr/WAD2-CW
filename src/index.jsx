@@ -27,37 +27,34 @@ function App(props) {
   return (
     <div className="cover-container d-flex w-100 h-100 flex-column" style="z-index: 1500;">
     <header>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <nav class="navbar navbar-expand-sm bg-body-tertiary">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <span class="navbar-brand" href="#">Edinburgh School of Dance</span>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <A class="nav-link active" aria-current="page" href="/home">Home</A>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <A class="nav-link" href="/catalogue">Course Catalogue</A>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
+                  My Account
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><A class="dropdown-item" href="/my-account/login">Login</A></li>
+                  <li><A class="dropdown-item" href="/my-account/sign-up">Sign Up</A></li>
                   <li><hr class="dropdown-divider"></hr></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  <li><A class="dropdown-item" href="/my-account/details">Your Classes</A></li>
                 </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+              <input class="form-control me-2" type="search" placeholder="Search courses" aria-label="Search" />
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
           </div>
@@ -66,22 +63,21 @@ function App(props) {
     </header>
     {props.children}
     </div>
-    
   );
 }
 
 render(() => (
   <Router root={App}>
     <Route path="/home" component={Home}/>
-    <Route path='/catalogue/' component={Catalogue} />
+    <Route path='/catalogue' component={Catalogue} />
     <Route path='/course/:id' component={Course} />
     <Route path="/my-account">
-        <Route path="/" component={MyAccount} />
-        <Route path="/login" component={Login} />
-        <Route path="/sign-up" component={SignUp} />
-        <Route path="/details" component={UserDetails} />
-        <Route path="/admin" component={Admin} />
-      </Route>
+      <Route path="/" component={MyAccount} />
+      <Route path="/login" component={Login} />
+      <Route path="/sign-up" component={SignUp} />
+      <Route path="/details" component={UserDetails} />
+      <Route path="/admin" component={Admin} />
+    </Route>
     <Route path='*' component={() => <Navigate href={'/home'} />} />;
   </Router>
 ), root);
