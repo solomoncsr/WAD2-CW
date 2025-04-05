@@ -1,0 +1,35 @@
+.main {
+
+}
+
+.homeVideo {
+    position: relative;
+    height: 100%; /* Full height of the viewport */
+    max-height: 50vh; /* Maximum height of 50% of the viewport */
+    overflow: hidden; /* Hide overflow to prevent scrollbars */
+    width: 100%;
+    object-fit: cover;
+}
+
+.titleText {
+    z-index: 1000;
+    position: absolute;
+}
+
+.titleSubtext {
+    z-index: 1000; 
+    position: absolute;
+}
+
+
+
+@media (max-width: 768px) {
+    .titleTextContainer {
+        height: 25vh; /* Adjust height for smaller screens */
+        max-height: 25vh; /* Maximum height of 25% of the viewport */
+    }
+    
+    .titleSubtext {
+        font-size: 1.11rem !important; /* Adjust font size for smaller screens */
+    }
+}
