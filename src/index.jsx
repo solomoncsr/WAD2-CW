@@ -15,6 +15,8 @@ import SignUp from './pages/auth/SignUp';
 import YourClasses from './pages/auth/YourClasses';
 import Admin from './pages/auth/Admin';
 
+import Footer from './components/Footer';
+
 const root = document.getElementById('root');
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
@@ -26,42 +28,43 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 function App(props) {
   return (
     <div className="cover-container d-flex w-100 h-100 flex-column" style="z-index: 1500;">
-    <header>
-      <nav class="navbar navbar-expand-sm bg-body-tertiary p-3">
-        <div class="container-fluid">
-          <span class="navbar-brand" href="#">Edinburgh School of Dance</span>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <A class="nav-link active" aria-current="page" href="/home">Home</A>
-              </li>
-              <li class="nav-item">
-                <A class="nav-link" href="/catalogue">Course Catalogue</A>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  My Account
-                </a>
-                <ul class="dropdown-menu">
-                  <li><A class="dropdown-item" href="/my-account/login">Login</A></li>
-                  <li><A class="dropdown-item" href="/my-account/sign-up">Sign Up</A></li>
-                  <li><hr class="dropdown-divider"></hr></li>
-                  <li><A class="dropdown-item" href="/my-account/details">Your Classes</A></li>
-                </ul>
-              </li>
-            </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search courses" aria-label="Search" />
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
+      <header>
+        <nav class="navbar navbar-expand-sm bg-body-tertiary p-3">
+          <div class="container-fluid">
+            <span class="navbar-brand" href="#">Edinburgh School of Dance</span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <A class="nav-link active" aria-current="page" href="/home">Home</A>
+                </li>
+                <li class="nav-item">
+                  <A class="nav-link" href="/catalogue">Course Catalogue</A>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    My Account
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><A class="dropdown-item" href="/my-account/login">Login</A></li>
+                    <li><A class="dropdown-item" href="/my-account/sign-up">Sign Up</A></li>
+                    <li><hr class="dropdown-divider"></hr></li>
+                    <li><A class="dropdown-item" href="/my-account/details">Your Classes</A></li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search courses" aria-label="Search" />
+                <button class="btn btn-outline-success" type="submit">Search</button>
+              </form>
+            </div>
           </div>
-        </div>
-      </nav>
-    </header>
-    {props.children}
+        </nav>
+      </header>
+      {props.children}
+      <Footer />
     </div>
   );
 }

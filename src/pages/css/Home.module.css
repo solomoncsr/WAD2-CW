@@ -1,5 +1,8 @@
 .main {
-
+    max-width: 100vw;           /* Prevent horizontal overflow */
+    overflow-x: hidden;         /* Hide accidental horizontal scroll */
+    padding: 0 0.5rem;            /* Optional: Add padding to avoid hugging edges */
+    box-sizing: border-box;     /* Ensure padding is included in the element's width */
 }
 
 .homeVideo {
@@ -19,9 +22,17 @@
 .titleSubtext {
     z-index: 1000; 
     position: absolute;
+    bottom: 0;
 }
 
+.titleTextContainer {
+    padding: 0;
+}
 
+.laptopImg {
+    width: 100%;
+    height: auto;
+}
 
 @media (max-width: 768px) {
     .titleTextContainer {
