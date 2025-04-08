@@ -6,11 +6,21 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const db = new nedb({ filename: 'data.db', autoload: true });
+const usersDb = new nedb({ filename: './data/users.db', autoload: true });
+const coursesDb = new nedb({ filename: './data/courses.db', autoload: true });
+const classesDb = new nedb({ filename: './data/classes.db', autoload: true });
+const bookingsDb = new nedb({ filename: './data/bookings.db', autoload: true });
+
+// Routes
+const userRoutes = require('./routes/users');
+const courseRoutes = require('./routes/courses');
 
 app.listen(5000, () => {
     console.log('Server started on http://localhost:5000');
 });
 
-export default app;
-export { db };
+exports.app = app;
+exports.usersDb = usersDb;
+exports.coursesDb = coursesDb;
+exports.classesDb = classesDb;
+exports.bookingsDb = bookingsDb;
