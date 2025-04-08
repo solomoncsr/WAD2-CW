@@ -1,0 +1,19 @@
+@media (min-width: 768px) {
+    .authFormWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 4rem); /* Subtract footer height if necessary */
+        padding: 1rem; /* Ensures spacing for smaller viewports */
+        box-sizing: border-box;
+    }
+}
+
+.authFormCard {
+    max-width: 33em;
+    width: 100%;
+    height: auto;
+    border-radius: 0px;
+    border: transparent;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.175);   
+}
