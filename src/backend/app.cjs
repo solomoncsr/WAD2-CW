@@ -1,8 +1,10 @@
 const nedb = require("gray-nedb");
 const express = require('express');
+const cors = require('cors');
 const path = require('path');
 
 const app = express();
+app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -13,7 +15,10 @@ const bookingsDb = new nedb({ filename: './data/bookings.db', autoload: true });
 
 // Routes
 const userRoutes = require('./routes/users');
-const courseRoutes = require('./routes/courses');
+// const courseRoutes = require('./routes/courses');
+
+app.use('/api/users', userRoutes);
+// app.use('/api/courses', courseRoutes);
 
 app.listen(5000, () => {
     console.log('Server started on http://localhost:5000');
