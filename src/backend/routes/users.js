@@ -1,5 +1,5 @@
 const express = require('express');
-const { usersDb } = require('../app.cjs');
+const { usersDb } = require('../db.js');
 
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.post('/register', (req, res) => {
     }
 
     // Check if user already exists
-    usersDb.findOne({ email }, (err, existingUser) => {
+    usersDb.findOne({ email: email }, (err, existingUser) => {
         if (err) {
             return res.status(500).json({ error: 'Database error' });
         }
@@ -24,7 +24,7 @@ router.post('/register', (req, res) => {
         }
 
         // Create new user
-        const newUser = { firstName, lastName, email, password };
+        const newUser = { firstName: firstName, lastName: lastName, email: email, password: password };
         usersDb.insert(newUser, (err, user) => {
             if (err) {
                 return res.status(500).json({ error: 'Database error' });
