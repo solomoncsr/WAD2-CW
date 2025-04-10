@@ -7,7 +7,9 @@ router.post('/register', (req, res) => {
     // Retrieve data from request body
     const {firstName, lastName, email, password} = req.body;
     
-    // Validate request body    
+    console.log('Received data:', req.body);
+
+    // Validate request body
     if (!firstName || !lastName || !email || !password) {
         return res.status(400).json({ error: 'All fields are required' });
     }

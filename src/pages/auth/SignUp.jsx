@@ -21,6 +21,8 @@ function SignUp() {
         setError('');
         setSuccess('');
 
+        console.log('Form Data:', formData());
+
         try {
             const response = await fetch('http://localhost:5000/api/users/register', {
                 method: 'POST',
