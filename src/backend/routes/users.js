@@ -1,5 +1,8 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { usersDb } = require('../db.js');
+const authMiddleware = require('../middleware/authMiddleware.js');
 
 const router = express.Router();
 
@@ -15,7 +18,7 @@ router.post('/register', (req, res) => {
     }
 
     // Check if user already exists
-    usersDb.findOne({ email: email }, (err, existingUser) => {
+    usersDb.findOne({ email: email }, async (err, existingUser) => {
         if (err) {
             return res.status(500).json({ error: 'Database error' });
         }
@@ -24,7 +27,12 @@ router.post('/register', (req, res) => {
         }
 
         // Create new user
-        const newUser = { firstName: firstName, lastName: lastName, email: email, password: password };
+        const newUser = { 
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: await bcrypt.hash(password, 10) // Hash the password
+        };
         usersDb.insert(newUser, (err, user) => {
             if (err) {
                 return res.status(500).json({ error: 'Database error' });
@@ -44,15 +52,22 @@ router.post('/login', (req, res) => {
     }
 
     // Check if user exists
-    usersDb.findOne({ email: email }, (err, user) => {
+    usersDb.findOne({ email: email }, async (err, user) => {
         if (err) {
             return res.status(500).json({ error: 'Database error' });
         }
-        if (!user || user.password !== password) {
-            return res.status(401).json({ error: 'Invalid email or password' });
+        if (!user) {
+            return res.status(401).json({ error: 'User does not exist' });
         }
 
-        return res.status(200).json({ message: 'Login successful', user });
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            return res.status(401).json({ error: 'Invalid credentials' });
+        }
+
+        const token = jwt.sign({id: user._id, email: user.email}, process.env.VITE_JWT_SECRET, { expiresIn: '1h' });
+
+        return res.status(200).json({ message: 'Login successful', token });
     });
 });
 

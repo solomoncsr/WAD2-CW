@@ -33,7 +33,8 @@ function Login() {
                 throw new Error(error);
             }
 
-            const { message } = await response.json();
+            const { message, token } = await response.json();
+            localStorage.setItem('token', token); // Store the token in local storage
             setSuccess(message);
         } catch (err) {
             setError(err.message);
