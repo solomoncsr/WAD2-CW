@@ -6,6 +6,22 @@ const authMiddleware = require('../middleware/authMiddleware.js');
 
 const router = express.Router();
 
+router.get('/profile', authMiddleware, (req, res) => {
+    // Retrieve user ID from request object
+    const userId = req.user.id;
+
+    // Find user in database
+    usersDb.findOne({ _id: userId }, (err, user) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        return res.status(200).json({ message: 'User profile retrieved successfully', user });
+    });
+});
+
 router.post('/register', (req, res) => {
     // Retrieve data from request body
     const {firstName, lastName, email, password} = req.body;

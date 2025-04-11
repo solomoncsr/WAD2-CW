@@ -12,7 +12,7 @@ import Course from './pages/courses/Course';
 import MyAccount from './pages/auth/MyAccount';
 import Login from './pages/auth/Login';
 import SignUp from './pages/auth/SignUp';
-import YourClasses from './pages/auth/YourClasses';
+import UserProfile from './pages/auth/UserProfile';
 import Admin from './pages/auth/Admin';
 
 import Footer from './components/Footer';
@@ -51,7 +51,7 @@ function App(props) {
                     <li><A class="dropdown-item" href="/my-account/login">Login</A></li>
                     <li><A class="dropdown-item" href="/my-account/sign-up">Sign Up</A></li>
                     <li><hr class="dropdown-divider"></hr></li>
-                    <li><A class="dropdown-item" href="/my-account/classes">Your Classes</A></li>
+                    <li><A class="dropdown-item" href="/my-account/profile">Your Classes</A></li>
                   </ul>
                 </li>
               </ul>
@@ -74,7 +74,7 @@ render(() => (
       <Route path="/" component={MyAccount} />
       <Route path="/login" component={Login} />
       <Route path="/sign-up" component={SignUp} />
-      <Route path="/classes" component={YourClasses} />
+      <Route path="/profile" component={UserProfile} />
       <Route path="/admin" component={Admin} />
     </Route>
     <Route path='*' component={() => <Navigate href={'/home'} />} />;

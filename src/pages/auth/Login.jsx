@@ -36,6 +36,10 @@ function Login() {
             const { message, token } = await response.json();
             localStorage.setItem('token', token); // Store the token in local storage
             setSuccess(message);
+
+            setTimeout(() => {
+                window.location.href = '/my-account/profile'; // Redirect to user profile page
+            }, 2000); // Redirect to user profile after 2 seconds
         } catch (err) {
             setError(err.message);
         }
