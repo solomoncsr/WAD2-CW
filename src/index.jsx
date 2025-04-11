@@ -9,7 +9,6 @@ import './assets/bootstrap/css/bootstrap.min.css';
 import Home from './pages/Home';
 import Catalogue from './pages/courses/Catalogue';
 import Course from './pages/courses/Course';
-import MyAccount from './pages/auth/MyAccount';
 import Login from './pages/auth/Login';
 import SignUp from './pages/auth/SignUp';
 import UserProfile from './pages/auth/UserProfile';
@@ -48,10 +47,10 @@ function App(props) {
                     My Account
                   </a>
                   <ul class="dropdown-menu">
-                    <li><A class="dropdown-item" href="/my-account/login">Login</A></li>
-                    <li><A class="dropdown-item" href="/my-account/sign-up">Sign Up</A></li>
+                    <li><A class="dropdown-item" href="/login">Login</A></li>
+                    <li><A class="dropdown-item" href="/sign-up">Sign Up</A></li>
                     <li><hr class="dropdown-divider"></hr></li>
-                    <li><A class="dropdown-item" href="/my-account/profile">Your Classes</A></li>
+                    <li><A class="dropdown-item" href="/profile">Your Classes</A></li>
                   </ul>
                 </li>
               </ul>
@@ -70,13 +69,10 @@ render(() => (
     <Route path="/home" component={Home}/>
     <Route path='/catalogue' component={Catalogue} />
     <Route path='/course/:id' component={Course} />
-    <Route path="/my-account">
-      <Route path="/" component={MyAccount} />
-      <Route path="/login" component={Login} />
-      <Route path="/sign-up" component={SignUp} />
-      <Route path="/profile" component={UserProfile} />
-      <Route path="/admin" component={Admin} />
-    </Route>
+    <Route path="/login" component={Login} />
+    <Route path="/sign-up" component={SignUp} />
+    <Route path="/profile" component={UserProfile} />
+    <Route path="/admin" component={Admin} />
     <Route path='*' component={() => <Navigate href={'/home'} />} />;
   </Router>
 ), root);

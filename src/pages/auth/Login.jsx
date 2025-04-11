@@ -38,7 +38,7 @@ function Login() {
             setSuccess(message);
 
             setTimeout(() => {
-                window.location.href = '/my-account/profile'; // Redirect to user profile page
+                window.location.href = '/profile'; // Redirect to user profile page
             }, 2000); // Redirect to user profile after 2 seconds
         } catch (err) {
             setError(err.message);
