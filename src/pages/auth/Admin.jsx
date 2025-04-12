@@ -36,22 +36,23 @@ function Admin() {
             }
 
             const data = await response.json();
+            console.log('Admin data:', data); // Log the admin data for debugging
 
             if (!data.user.adminTag) {
-                throw new Error('You do not have admin privileges');
+                alert('You do not have admin privileges.');
+                window.location.href = '/login';
+                return;
             }
 
             setUserData(data.user);
         } catch (error) {
             setError(error.message);
-            setTimeout(() => {
-                window.location.href = '/login'; // Redirect to login page after error
-            }, 3000); // Redirect user after 3 seconds
         }
     };
 
-    onMount(() => {
-        fetchAdminData();
+    onMount(async () => {
+        await fetchAdminData();
+        console.log(userData()); // Log the user data for debugging
     });
     
     return (
