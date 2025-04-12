@@ -1,2 +1,2 @@
-{"firstName":"ESOD","lastName":"ADMIN","email":"ADMIN@ESOD","password":"$2b$10$4k8zt2zHYJsfAfAulWMzv.ybh/nKa5qyvRMnbjA6tZm27FYKdANNm","adminTag":true,"createdAt":{"$$date":1744487986625},"_id":"ZdKmGA6ErkXy9M4T"}
 {"firstName":"Saul","lastName":"Mackenzie","email":"saulmackenzie2@gmail.com","password":"$2b$10$smjBLwyYSrEPT9cvPIjU6e.ps0G.0.fwqkJnS611S/E5bgWQvAnFC","adminTag":false,"createdAt":{"$$date":1744488114915},"_id":"4bPaaswxopaSYjl7"}
+{"firstName":"ESOD","lastName":"ADMIN","email":"ADMIN@ESOD","password":"$2b$10$4k8zt2zHYJsfAfAulWMzv.ybh/nKa5qyvRMnbjA6tZm27FYKdANNm","adminTag":true,"createdAt":{"$$date":1744487986625},"_id":"ZdKmGA6ErkXy9M4T"}
