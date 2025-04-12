@@ -23,7 +23,7 @@ function Admin() {
             }
 
             // Fetch admin data if the token is valid
-            const response = await fetch('http://localhost:5000/api/profile', {
+            const response = await fetch('http://localhost:5000/api/users/profile', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -62,21 +62,21 @@ function Admin() {
                     <div className="mt-4">
                         <h2>{`${userData().firstName}${userData().lastName}`}</h2>
                         <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
+                        <div className="mt-4">
+                            <h3>Admin Actions</h3>
+                            <div className="d-flex flex-column gap-2">
+                                <button className="btn btn-primary" onClick={() => console.log('View Users')}>View Users</button>
+                                <button className="btn btn-secondary" onClick={() => console.log('Manage Roles')}>Manage Roles</button>
+                                <button className="btn btn-success" onClick={() => console.log('Generate Reports')}>Generate Reports</button>
+                                <button className="btn btn-warning" onClick={() => console.log('System Settings')}>System Settings</button>
+                            </div>
+                        </div>
                     </div>
                 ) : (
                     <>
                         {error() && <div className="alert alert-danger">{error()}</div>}
                     </>
                 )}
-            </div>
-            <div className="mt-4">
-                <h3>Admin Actions</h3>
-                <div className="d-flex flex-column gap-2">
-                    <button className="btn btn-primary" onClick={() => console.log('View Users')}>View Users</button>
-                    <button className="btn btn-secondary" onClick={() => console.log('Manage Roles')}>Manage Roles</button>
-                    <button className="btn btn-success" onClick={() => console.log('Generate Reports')}>Generate Reports</button>
-                    <button className="btn btn-warning" onClick={() => console.log('System Settings')}>System Settings</button>
-                </div>
             </div>
         </main>
     );
