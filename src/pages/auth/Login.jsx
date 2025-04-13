@@ -1,4 +1,6 @@
 import { createSignal } from 'solid-js';
+import { authState, setAuthState } from '../../stores/authStore';
+
 import styles from '../css/auth/AuthForm.module.css';
 
 function Login() {
@@ -22,24 +24,42 @@ function Login() {
         console.log('Form Data:', formData());
 
         try {
-            const response = await fetch('http://localhost:5000/api/users/login', {
+            const loginResponse = await fetch('http://localhost:5000/api/users/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData()),
             });
 
-            if (!response.ok) {
-                const { error } = await response.json();
+            if (!loginResponse.ok) {
+                const { error } = await loginResponse.json();
                 throw new Error(error);
             }
 
-            const { message, token } = await response.json();
+            const { message, token } = await loginResponse.json();
             localStorage.setItem('token', token); // Store the token in local storage
-            setSuccess(message);
+            
+            // Fetch user profile data if the token is valid
+            const profileResponse = await fetch('http://localhost:5000/api/users/profile', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
 
+            if (!profileResponse.ok) {
+                throw new Error('Failed to fetch user profile');
+            }
+
+            const userData = await profileResponse.json();
+
+            setAuthState({ isAuthenticated: true, user: userData.user, token }); // Update the auth state
+            console.log('User Data:', authState());
+
+            setSuccess(message);
             setTimeout(() => {
                 window.location.href = '/profile'; // Redirect to user profile page
-            }, 2000); // Redirect to user profile after 2 seconds
+            }, 10000); // Redirect to user profile after 2 seconds
         } catch (err) {
             setError(err.message);
         }

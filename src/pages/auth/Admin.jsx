@@ -1,4 +1,5 @@
 import { createSignal, onMount } from 'solid-js';
+import { authState } from '../../stores/authStore';
 
 import styles from '../css/auth/AuthForm.module.css';
 
@@ -12,9 +13,9 @@ function Admin() {
         return payload.exp < currentTime; // Check if the token is expired
     };
 
-    const fetchAdminData = async () => {
+    const checkAdminTag = async () => {
         try {
-            const token = localStorage.getItem('token');
+            const token = authState().token; // Get the token from the auth state
             // Check if token exists and is not expired
             if (!token || isTokenExpired(token)) {
                 alert('Session expired. Please log in again.');
@@ -22,37 +23,19 @@ function Admin() {
                 return;
             }
 
-            // Fetch admin data if the token is valid
-            const response = await fetch('http://localhost:5000/api/users/profile', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to fetch admin data');
-            }
-
-            const data = await response.json();
-            console.log('Admin data:', data); // Log the admin data for debugging
-
-            if (!data.user.adminTag) {
-                alert('You do not have admin privileges.');
+            if (!authState().isAuthenticated || !authState().user?.adminTag) {
                 window.location.href = '/login';
                 return;
             }
 
-            setUserData(data.user);
+            setUserData(authState().user); // Set user data if authenticated and has adminTag
         } catch (error) {
             setError(error.message);
         }
     };
 
     onMount(async () => {
-        await fetchAdminData();
-        console.log(userData()); // Log the user data for debugging
+        await checkAdminTag();
     });
     
     return (
@@ -61,8 +44,7 @@ function Admin() {
                 <h1>Admin Dashboard</h1>
                 {userData() ? (
                     <div className="mt-4">
-                        <h2>{`${userData().firstName}${userData().lastName}`}</h2>
-                        <button className="btn btn-danger" onClick={handleLogout}>Logout</button>
+                        <h2>{`${userData().firstName} ${userData().lastName}`}</h2>
                         <div className="mt-4">
                             <h3>Admin Actions</h3>
                             <div className="d-flex flex-column gap-2">

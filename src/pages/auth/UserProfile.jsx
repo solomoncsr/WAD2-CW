@@ -1,4 +1,5 @@
 import { createSignal, onMount } from 'solid-js';
+import { authState, setAuthState } from '../../stores/authStore';
 
 import styles from '../css/auth/AuthForm.module.css';
 
@@ -14,7 +15,7 @@ function UserProfile() {
 
     const fetchUserProfile = async () => {
         try {
-            const token = localStorage.getItem('token');
+            const token = authState().token; // Get the token from the auth state
             // Check if token exists and is not expired
             if (!token || isTokenExpired(token)) {
                 alert('Session expired. Please log in again.');
@@ -44,11 +45,17 @@ function UserProfile() {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
+        setAuthState({
+            isAuthenticated: false,
+            user: null,
+            token: null,
+        });
         window.location.href = '/login'; // Redirect to login page
     };
 
-    onMount(() => {
-        fetchUserProfile();
+    onMount(async () => {
+        await fetchUserProfile();
+        console.log(authState());
     });
     
     return (
