@@ -16,6 +16,7 @@ function UserProfile() {
     const fetchUserProfile = async () => {
         try {
             const token = authState().token; // Get the token from the auth state
+
             // Check if token exists and is not expired
             if (!token || isTokenExpired(token)) {
                 alert('Session expired. Please log in again.');
@@ -23,21 +24,13 @@ function UserProfile() {
                 return;
             }
 
-            // Fetch user profile data if the token is valid
-            const response = await fetch('http://localhost:5000/api/users/profile', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to fetch user profile');
-            }
-
-            const data = await response.json();
-            setUserData(data.user);
+            // Ensure the user is authenticated
+            if (!authState().isAuthenticated) {
+                window.location.href = '/login';
+                return;
+            } 
+                
+            setUserData(authState().user); // Set user data if authenticated
         } catch (error) {
             setError(error.message);
         }
