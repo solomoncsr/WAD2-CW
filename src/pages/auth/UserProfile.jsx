@@ -26,9 +26,10 @@ function UserProfile() {
 
             // Ensure the user is authenticated
             if (!authState().isAuthenticated) {
+                alert('Token not authenticated. Please log in again.');
                 window.location.href = '/login';
                 return;
-            } 
+            }
                 
             setUserData(authState().user); // Set user data if authenticated
         } catch (error) {

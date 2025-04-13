@@ -19,12 +19,12 @@ function Admin() {
             // Check if token exists and is not expired
             if (!token || isTokenExpired(token)) {
                 alert('Session expired. Please log in again.');
-                window.location.href = '/login';
+                window.location.href = '/profile';
                 return;
             }
 
             if (!authState().isAuthenticated || !authState().user?.adminTag) {
-                window.location.href = '/login';
+                window.location.href = '/profile';
                 return;
             }
 

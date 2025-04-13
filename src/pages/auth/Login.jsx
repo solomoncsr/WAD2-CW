@@ -59,7 +59,7 @@ function Login() {
             setSuccess(message);
             setTimeout(() => {
                 window.location.href = '/profile'; // Redirect to user profile page
-            }, 10000); // Redirect to user profile after 2 seconds
+            }, 2000); // Redirect to user profile after 2 seconds
         } catch (err) {
             setError(err.message);
         }
@@ -96,7 +96,7 @@ function Login() {
                     </div>
                     <button type="submit" className="btn btn-primary w-100">Login</button>
                 </form>
-            </div>    
+            </div>
         </main>
     );
 }
