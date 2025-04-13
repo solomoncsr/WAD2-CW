@@ -1,5 +1,5 @@
 import { createSignal, onMount } from 'solid-js';
-import { authState, setAuthState } from '../../stores/authStore';
+import { authState, updateAuthState } from '../../stores/authStore';
 
 import styles from '../css/auth/AuthForm.module.css';
 
@@ -45,7 +45,8 @@ function UserProfile() {
 
     const handleLogout = () => {
         localStorage.removeItem('token');
-        setAuthState({
+        localStorage.removeItem('user');  // Clear the user data
+        updateAuthState({
             isAuthenticated: false,
             user: null,
             token: null,

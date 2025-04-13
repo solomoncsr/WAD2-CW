@@ -1,5 +1,5 @@
 import { createSignal } from 'solid-js';
-import { authState, setAuthState } from '../../stores/authStore';
+import { authState, updateAuthState } from '../../stores/authStore';
 
 import styles from '../css/auth/AuthForm.module.css';
 
@@ -53,7 +53,7 @@ function Login() {
 
             const userData = await profileResponse.json();
 
-            setAuthState({ isAuthenticated: true, user: userData.user, token }); // Update the auth state
+            updateAuthState({ isAuthenticated: true, user: userData.user, token }); // Update the auth state
             console.log('User Data:', authState());
 
             setSuccess(message);

@@ -85,7 +85,7 @@ router.post('/login', (req, res) => {
 
         const token = jwt.sign({id: user._id, email: user.email}, process.env.VITE_JWT_SECRET, { expiresIn: '1h' });
 
-        return res.status(200).json({ message: 'Login successful', token });
+        return res.status(200).json({ message: 'Login successful', token}); // Exclude password from user data
     });
 });
 
