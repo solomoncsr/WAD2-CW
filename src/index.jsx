@@ -1,6 +1,8 @@
 /* @refresh reload */
 import { render } from 'solid-js/web';
+import { createEffect } from 'solid-js';
 import { Route, Router, A, Navigate } from '@solidjs/router';
+import { authState } from './stores/authStore';
 
 import './index.css';
 import './assets/bootstrap/js/bootstrap.bundle.min.js';
@@ -25,6 +27,21 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
 }
 
 function App(props) {
+  createEffect(() => {
+    const isAuthenticated = authState().isAuthenticated;
+
+    const loginButton = document.querySelector('a[href="/login"]');
+    const signUpButton = document.querySelector('a[href="/sign-up"]');
+
+    if (isAuthenticated) {
+      loginButton.classList.add('disabled');
+      signUpButton.classList.add('disabled');
+    } else {
+      loginButton.classList.remove('disabled');
+      signUpButton.classList.remove('disabled');
+    }
+  });
+  
   return (
     <div className="cover-container d-flex w-100 h-100 flex-column" style="z-index: 1500;">
       <header>
