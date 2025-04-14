@@ -38,6 +38,21 @@ function Course() {
         <main className="container">
             <h1>Course</h1>
             {error() && <div className="alert alert-danger">{error()}</div>}
+            {course() ? (
+                <div>
+                    <h2>{course().title}</h2>
+                    <p>{course().description}</p>
+                    <p>Instructor: {course().instructor}</p>
+                    <p><strong>Schedule:</strong> {course().schedule}</p>
+                    <p><strong>Price:</strong> £{course().price}</p>
+                    <p><strong>Capacity:</strong> {course().enrolledUsers.length}/{course().capacity}</p>
+                </div>
+            ) : (
+                <p>Loading...</p>
+            )}
+            <div className="actions">
+                <button className="btn btn-primary" onClick={() => window.history.back()}>Back</button>
+            </div>
         </main>
     );
 }

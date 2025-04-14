@@ -32,13 +32,16 @@ function App(props) {
 
     const loginButton = document.querySelector('a[href="/login"]');
     const signUpButton = document.querySelector('a[href="/sign-up"]');
+    const profileButton = document.querySelector('a[href="/profile"]');
 
     if (isAuthenticated) {
       loginButton.classList.add('disabled');
       signUpButton.classList.add('disabled');
+      profileButton.classList.remove('disabled');
     } else {
       loginButton.classList.remove('disabled');
       signUpButton.classList.remove('disabled');
+      profileButton.classList.add('disabled');
     }
   });
   
@@ -67,7 +70,7 @@ function App(props) {
                     <li><A class="dropdown-item" href="/login">Login</A></li>
                     <li><A class="dropdown-item" href="/sign-up">Sign Up</A></li>
                     <li><hr class="dropdown-divider"></hr></li>
-                    <li><A class="dropdown-item" href="/profile">Your Classes</A></li>
+                    <li><A class="dropdown-item" href="/profile">Your Profile</A></li>
                   </ul>
                 </li>
               </ul>
