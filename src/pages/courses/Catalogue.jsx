@@ -1,5 +1,7 @@
 import { createSignal, onMount } from "solid-js";
 
+import CourseCard from "../../components/CourseCard";
+
 function Catalogue() {
     const [courses, setCourses] = createSignal('');
     const [error, setError] = createSignal('');
@@ -17,21 +19,38 @@ function Catalogue() {
             }
 
             const data = await response.json();
-            setCourses(data);
-        } catch (err) {
-            setError(err.message);
+            
+            try {
+                const cards = data.map((course) => {
+                    return (
+                        <CourseCard
+                            title={course.title}
+                            description={course.description}
+                        />
+                    );
+                });
+                setCourses(cards);
+            } catch (error) {
+                setError(error.message);
+            }
+        } catch (error) {
+            setError(error.message);
         }
     };
 
     onMount(async () => {
         await fetchCourses();
-        console.log(courses());
     });
 
     return (
         <main className="container">
             <h1>Available Courses</h1>
             {error() && <div className="alert alert-danger">{error()}</div>}
+            <div class="container">
+                <div className="row">
+                    {courses()}
+                </div>
+            </div>
         </main>
     );
 }
