@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post(':id/enroll', authMiddleware, (req, res) => {
+router.post('/:id/enroll', authMiddleware, (req, res) => {
     const courseId = req.params.id;
     const userId = req.user.id;
 
