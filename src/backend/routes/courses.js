@@ -13,6 +13,20 @@ router.get('/', (_, res) => {
     });
 });
 
+// Get course by ID
+router.get('/:id', (req, res) => {
+    const courseId = req.params.id;
+    coursesDb.findOne({ _id: courseId }, (err, course) => {
+        if (err) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+        if (!course) {
+            return res.status(404).json({ error: 'Course not found' });
+        }
+        res.status(200).json(course);
+    });
+});
+
 router.post(':id/enroll', authMiddleware, (req, res) => {
     const courseId = req.params.id;
     const userId = req.user.id;
