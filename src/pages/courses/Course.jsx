@@ -1,4 +1,4 @@
-import { onMount } from "solid-js";
+import { createEffect, onMount } from "solid-js";
 import { useParams } from "@solidjs/router";
 import { createSignal } from "solid-js";
 import { authState } from "../../stores/authStore";
@@ -72,7 +72,7 @@ function Course() {
                     <p><strong>Schedule:</strong> {course().schedule}</p>
                     <p><strong>Price:</strong> £{course().price}</p>
                     <p><strong>Capacity:</strong> {course().enrolledUsers.length}/{course().capacity}</p>
-                    <button type="button" class="btn btn-primary mt-3 roboto-bold" style="background-color: #e75caf; color: white; border-color: #e75caf; width:100%;" onclick={handleEnroll}><span class="roboto-medium">ENROLL IN COURSE</span></button>
+                    <button type="button" class="btn btn-primary mt-3 roboto-bold" style="background-color: #e75caf; color: white; border-color: #e75caf; width:100%;" onclick={handleEnroll} disabled={!authState().isAuthenticated}><span class="roboto-medium">ENROLL IN COURSE</span></button>
                 </div>
             ) : (
                 <p>Loading...</p>
