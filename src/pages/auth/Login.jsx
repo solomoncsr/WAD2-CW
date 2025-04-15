@@ -94,7 +94,7 @@ function Login() {
                             onInput={handleInputChange}
                         />
                     </div>
-                    <button type="submit" className="btn btn-primary w-100">Login</button>
+                    <button type="submit" className={`${styles.standardButton} btn btn-primary w-100`}><span className="roboto-bold">SUBMIT</span></button>
                 </form>
             </div>
         </main>

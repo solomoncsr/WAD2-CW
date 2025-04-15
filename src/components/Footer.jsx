@@ -12,7 +12,7 @@ function Footer() {
             </div>
 
             <div className={`${styles.footerText} text-center p-3`}>
-                © 2023 Edinburgh School of Dance | All Rights Reserved
+                © 2025 Edinburgh School of Dance | All Rights Reserved
             </div>
         </footer>
     );

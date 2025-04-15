@@ -23,9 +23,9 @@ function Home() {
                     <div className="col-lg-6 col-md-6 col-sm-12" style={{ padding: 0 }}>
                         {homeVideo()}
                     </div>
-                    <div className={`${styles.titleTextContainer} col-lg-6 col-md-6 col-sm-12 position-relative mx-auto px-5`}>
-                        <h1 className={`${styles.titleText} display-6`}>Welcome to the Edinburgh School of Dance!</h1>
-                        <p className={`${styles.titleSubtext} lead`}>
+                    <div className="col-lg-6 col-md-6 col-sm-12 p-5">
+                        <h1 className={`${styles.subtitle} roboto-bold`}>Welcome to Edinburgh School of Dance!</h1>
+                        <p className="lead mt-3" style={{ "text-align": "justify", "font-weight": "400" }}>
                             At the Edinburgh School of Dance, we believe that dance is for everyone.
                             Whether you're taking your first steps or you're an experienced dancer, we have something for everyone.
                             From ballet and ballroom to contemporary and hip-hop, our experienced instructors are here to help you achieve your goals.
@@ -40,7 +40,7 @@ function Home() {
                             Unlock access to tailored dance classes, expert instructors, exclusive member benefits
                             and a vibrant community of fellow dancers. Whether you're a beginner or an experienced dancer, we have something for everyone.
                         </p>
-                        <div className="pt-3">
+                        <div className="pt-3" style={{ "text-align": "center" }}>
                             <a type="button" className={`${styles.standardButton} btn btn-primary`} href='/sign-up'><span className="roboto-bold">JOIN TODAY</span></a>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ function Home() {
                             Whether you're just beginning or perfecting your technique, our diverse range of classes ensures there’s something for everyone.
                             From casual learners to aspiring professionals, we support every dancer’s journey.
                         </p>
-                        <div className="pt-3" style={{ "text-align": "right" }}>
+                        <div className="pt-3" style={{ "text-align": "center" }}>
                             <a type="button" className={`${styles.standardButton} btn btn-primary`} href='/catalogue'><span className="roboto-bold">BROWSE CATALOGUE</span></a>
                         </div>
                     </div>
@@ -72,7 +72,7 @@ function Home() {
                             Our dedicated team of instructors brings years of professional experience and a passion for teaching.
                             With personalised guidance and a supportive environment, you'll grow in confidence, skill, and creativity.
                         </p>
-                        <div className="pt-3">
+                        <div className="pt-3" style={{ "text-align": "center" }}>
                             <a type="button" className={`${styles.standardButton} btn btn-primary`} href='/contact'><span className="roboto-bold">CONTACT US</span></a>
                         </div>
                     </div>
