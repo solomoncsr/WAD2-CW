@@ -49,7 +49,7 @@ function Admin() {
                             <h3>Admin Actions</h3>
                             <div className="d-flex flex-column gap-2">
                                 <button className="btn btn-primary" onClick={() => console.log('View Users')}>View Users</button>
-                                <button className="btn btn-secondary" onClick={() => console.log('Manage Roles')}>Manage Roles</button>
+                                <button className="btn btn-secondary" disabled={!authState().user.superAdminTag} onClick={() => console.log('Manage Roles')}>Manage Roles</button>
                                 <button className="btn btn-success" onClick={() => console.log('Generate Reports')}>Generate Reports</button>
                                 <button className="btn btn-warning" onClick={() => console.log('System Settings')}>System Settings</button>
                             </div>

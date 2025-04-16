@@ -49,6 +49,7 @@ router.post('/register', (req, res) => {
             email: email,
             password: await bcrypt.hash(password, 10), // Hash the password
             adminTag: false,
+            superAdminTag: false,
             createdAt: new Date()
         };
         usersDb.insert(newUser, (err, user) => {
