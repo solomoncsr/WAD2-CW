@@ -6,7 +6,7 @@ import styles from '../css/auth/AuthForm.module.css';
 import ViewUsersModal from '../../components/auth/ViewUsersModal';
 import ManageUsersModal from '../../components/auth/ManageRolesModal';
 import ManageCoursesModal from '../../components/auth/ManageCoursesModal';
-import GenerateReportsModal from '../../components/auth/GenerateReportsModal';
+import GenerateReportModal from '../../components/auth/GenerateReportModal';
 
 function Admin() {    
     const [userData, setUserData] = createSignal(null);
@@ -56,7 +56,7 @@ function Admin() {
                                 <button className={`${styles.viewUsersButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#viewUsersModal"><span className="roboto-bold" style={{"text-transform": "uppercase"}}>View Users</span></button>
                                 <button className={`${styles.manageRolesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageRolesModal" disabled={!authState().user.superAdminTag}><span className="roboto-bold"  style={{"text-transform": "uppercase"}}>Manage Users</span></button>
                                 <button className={`${styles.manageCoursesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageCoursesModal"><span className="roboto-bold" style={{"text-transform": "uppercase"}}>Manage Courses</span></button>
-                                <button className={`${styles.generateReportsButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#generateReportsModal"><span className="roboto-bold" style={{"text-transform": "uppercase"}}>Generate Report</span></button>
+                                <button className={`${styles.generateReportsButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#generateReportModal"><span className="roboto-bold" style={{"text-transform": "uppercase"}}>Generate Report</span></button>
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@ function Admin() {
             <ViewUsersModal />
             <ManageUsersModal />
             <ManageCoursesModal />
-            <GenerateReportsModal />
+            <GenerateReportModal />
         </main>
     );
 }
