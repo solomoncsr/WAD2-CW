@@ -1,0 +1,7 @@
+.userTable {
+    max-height: 300px;  /* Adjust height as needed */
+    overflow-y: auto;   /* Enable vertical scrolling */
+    overflow-x: auto;   /* Enable horizontal scrolling (if needed) */
+    border: 1px solid #ddd; /* Optional: adds a border around the table */
+    padding: 10px;  /* Optional: adds spacing inside the scrollable area */
+}
