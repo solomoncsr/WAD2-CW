@@ -62,7 +62,6 @@ function ViewUsersModal () {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="viewUsersModalLabel">View users</h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     {error() && <div className="alert alert-danger">{error()}</div>}
                     <div className="modal-body">
@@ -75,8 +74,7 @@ function ViewUsersModal () {
                         )}
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Save changes</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal"><span className="roboto-bold">CLOSE</span></button>
                     </div>
                 </div>
             </div>

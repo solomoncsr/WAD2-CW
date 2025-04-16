@@ -6,6 +6,41 @@ const authMiddleware = require('../middleware/authMiddleware.js');
 
 const router = express.Router();
 
+// Grant or revoke admin access, only for super admin account
+router.post('/admin', authMiddleware, (req, res) => {
+    const superAdminTag = req.user.superAdminTag;
+    const { userEmail } = req.body;
+
+    console.log('Received data:', req.body);
+    
+    if (!superAdminTag) {
+        return res.status(403).json({ error: 'Access denied' });
+    }
+    if (!userEmail) {
+        return res.status(400).json({ error: 'User email is required' });
+    }
+
+    // Find user in database
+    usersDb.findOne({ email: userEmail }, (err, user) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Toggle admin access
+        user.adminTag = !user.adminTag;
+        usersDb.update({ _id: user._id }, { $set: { adminTag: user.adminTag } }, {}, (err, numUpdated) => {
+            if (err) {
+                return res.status(500).json({ error: 'Database error' });
+            }
+            return res.status(200).json({ message: `User ${user.adminTag ? 'granted' : 'revoked'} admin access successfully`, user });
+        });
+    });
+});
+
+// Get all users
 router.get('/users', authMiddleware, (req, res) => {
     const adminTag = req.user.adminTag;
     
@@ -25,6 +60,7 @@ router.get('/users', authMiddleware, (req, res) => {
     });
 });
 
+// Fetch user profile
 router.get('/profile', authMiddleware, (req, res) => {
     // Retrieve user ID from request object
     const userId = req.user._id;
@@ -41,6 +77,7 @@ router.get('/profile', authMiddleware, (req, res) => {
     });
 });
 
+// Register new user
 router.post('/register', (req, res) => {
     // Retrieve data from request body
     const {firstName, lastName, email, password} = req.body;
@@ -80,6 +117,7 @@ router.post('/register', (req, res) => {
     });
 });
 
+// Login user
 router.post('/login', (req, res) => {
     // Retrieve data from request body
     const { email, password } = req.body;

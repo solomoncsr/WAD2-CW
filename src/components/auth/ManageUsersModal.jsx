@@ -5,7 +5,6 @@ function ManageUsersModal () {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="manageUsersModalLabel">Manage users</h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
                         {/* Modal body content for managing users goes here */}
