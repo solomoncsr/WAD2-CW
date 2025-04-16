@@ -60,6 +60,38 @@ router.get('/users', authMiddleware, (req, res) => {
     });
 });
 
+// Delete a user
+router.post('/delete', authMiddleware, (req, res) => {
+    const superAdminTag = req.user.superAdminTag;
+    const { userEmail } = req.body;
+
+    console.log('Received data:', req.body);
+    
+    if (!superAdminTag) {
+        return res.status(403).json({ error: 'Access denied' });
+    }
+    if (!userEmail) {
+        return res.status(400).json({ error: 'User email is required' });
+    }
+
+    usersDb.findOne({ email: userEmail }, (err, user) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Delete user from the database
+        usersDb.remove({ _id: user._id }, {}, (err, numRemoved) => {
+            if (err) {
+                return res.status(500).json({ error: 'Database error' });
+            }
+            return res.status(200).json({ message: 'User deleted successfully' });
+        });
+    });
+});
+
 // Fetch user profile
 router.get('/profile', authMiddleware, (req, res) => {
     // Retrieve user ID from request object

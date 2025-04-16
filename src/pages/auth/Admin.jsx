@@ -4,11 +4,9 @@ import { authState } from '../../stores/authStore';
 import styles from '../css/auth/AuthForm.module.css';
 
 import ViewUsersModal from '../../components/auth/ViewUsersModal';
-import ManageUsersModal from '../../components/auth/ManageUsersModal';
-import ManageRolesModal from '../../components/auth/ManageRolesModal';
+import ManageUsersModal from '../../components/auth/ManageRolesModal';
 import ManageCoursesModal from '../../components/auth/ManageCoursesModal';
 import GenerateReportsModal from '../../components/auth/GenerateReportsModal';
-import SystemSettingsModal from '../../components/auth/SystemSettingsModal';
 
 function Admin() {    
     const [userData, setUserData] = createSignal(null);
@@ -56,8 +54,7 @@ function Admin() {
                             <h3><span className="roboto-bold">Admin Actions</span></h3>
                             <div className="d-flex flex-column gap-2">
                                 <button className={`${styles.viewUsersButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#viewUsersModal"><span className="roboto-bold" style={{"text-transform": "uppercase"}}>View Users</span></button>
-                                <button className={`${styles.manageUsersButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageUsersModal" disabled={!authState().user.superAdminTag}><span className="roboto-bold"  style={{"text-transform": "uppercase"}}>Manage Users</span></button>
-                                <button className={`${styles.manageRolesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageRolesModal" disabled={!authState().user.superAdminTag}><span className="roboto-bold"  style={{"text-transform": "uppercase"}}>Manage Roles</span></button>
+                                <button className={`${styles.manageRolesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageRolesModal" disabled={!authState().user.superAdminTag}><span className="roboto-bold"  style={{"text-transform": "uppercase"}}>Manage Users</span></button>
                                 <button className={`${styles.manageCoursesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageCoursesModal"><span className="roboto-bold" style={{"text-transform": "uppercase"}}>Manage Courses</span></button>
                                 <button className={`${styles.generateReportsButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#generateReportsModal"><span className="roboto-bold" style={{"text-transform": "uppercase"}}>Generate Report</span></button>
                             </div>
@@ -71,10 +68,8 @@ function Admin() {
             </div>
             <ViewUsersModal />
             <ManageUsersModal />
-            <ManageRolesModal />
             <ManageCoursesModal />
             <GenerateReportsModal />
-            <SystemSettingsModal />
         </main>
     );
 }
