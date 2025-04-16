@@ -6,6 +6,25 @@ const authMiddleware = require('../middleware/authMiddleware.js');
 
 const router = express.Router();
 
+router.get('/users', authMiddleware, (req, res) => {
+    const adminTag = req.user.adminTag;
+    
+    if (!adminTag) {
+        return res.status(403).json({ error: 'Access denied' });
+    }
+
+    // Get all users from the database
+    usersDb.find({}, (err, users) => {
+        if (err) {
+            return res.status(500).json({ error: 'Database error' });
+        }
+        if (!users || users.length === 0) {
+            return res.status(404).json({ error: 'No users found' });
+        }
+        return res.status(200).json({ message: 'Users retrieved successfully', users });
+    });
+});
+
 router.get('/profile', authMiddleware, (req, res) => {
     // Retrieve user ID from request object
     const userId = req.user.id;

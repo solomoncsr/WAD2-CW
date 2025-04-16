@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { usersDb } = require('../db.js');
 
 const authMiddleware = (req, res, next) => {
     const token = req.headers['authorization'];
@@ -11,15 +12,13 @@ const authMiddleware = (req, res, next) => {
     const actualToken = token.startsWith('Bearer ') ? token.slice(7) : token;
 
     try {
-        jwt.verify(actualToken, process.env.VITE_JWT_SECRET, (err, decoded) => {
-            if (err) {
-                console.error('JWT Verification Error:', err); // Log the error for debugging
-                return res.status(401).json({ error: 'Failed to authenticate token' });
+        const decoded = jwt.verify(actualToken, process.env.VITE_JWT_SECRET);
+        usersDb.findOne({ _id: decoded.id }, (err, user) => {
+            if (err || !user) {
+                return res.status(401).json({ error: 'Unauthorised' });
             }
-
-            // Save user info from token to request object for further use
-            req.user = decoded;
-            next();
+            req.user = user; // Attach the user to the request object
+            next(); // Proceed to the next middleware or route handler
         });
     } catch (error) {
         console.error('JWT Error:', error); // Log the error for debugging
