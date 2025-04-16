@@ -99,6 +99,33 @@
     }
 }
 
+.manageUsersButton {
+    background-color: #3F51B5; /* A pleasant indigo color */
+    color: white; /* White text for contrast */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Slightly rounded corners */
+    padding: 0.75rem 1.5rem; /* Comfortable padding */
+    font-size: 1rem; /* Standard font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+
+    &:hover {
+        background-color: #3949AB; /* Darker indigo on hover */
+        transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+
+    &:active {
+        background-color: #303F9F; /* Even darker indigo when clicked */
+        transform: scale(0.95); /* Slightly shrink on click */
+    }
+
+    &:disabled {
+        background-color: #cccccc; /* Gray color for disabled state */
+        cursor: not-allowed; /* Not-allowed cursor for disabled state */
+        opacity: 0.6; /* Reduced opacity for disabled state */
+    }
+}
+
 .manageCoursesButton {
     background-color: #FF9800; /* A pleasant orange color */
     color: white; /* White text for contrast */
@@ -170,33 +197,6 @@
 
     &:active {
         background-color: #E64A19; /* Even darker red-orange when clicked */
-        transform: scale(0.95); /* Slightly shrink on click */
-    }
-
-    &:disabled {
-        background-color: #cccccc; /* Gray color for disabled state */
-        cursor: not-allowed; /* Not-allowed cursor for disabled state */
-        opacity: 0.6; /* Reduced opacity for disabled state */
-    }
-}
-
-.systemSettingsButton {
-    background-color: #607D8B; /* A pleasant blue-gray color */
-    color: white; /* White text for contrast */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Slightly rounded corners */
-    padding: 0.75rem 1.5rem; /* Comfortable padding */
-    font-size: 1rem; /* Standard font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
-
-    &:hover {
-        background-color: #546E7A; /* Darker blue-gray on hover */
-        transform: scale(1.05); /* Slightly enlarge on hover */
-    }
-
-    &:active {
-        background-color: #455A64; /* Even darker blue-gray when clicked */
         transform: scale(0.95); /* Slightly shrink on click */
     }
 

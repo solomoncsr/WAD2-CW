@@ -27,7 +27,7 @@ router.get('/users', authMiddleware, (req, res) => {
 
 router.get('/profile', authMiddleware, (req, res) => {
     // Retrieve user ID from request object
-    const userId = req.user.id;
+    const userId = req.user._id;
 
     // Find user in database
     usersDb.findOne({ _id: userId }, (err, user) => {

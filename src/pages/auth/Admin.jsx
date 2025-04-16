@@ -4,6 +4,7 @@ import { authState } from '../../stores/authStore';
 import styles from '../css/auth/AuthForm.module.css';
 
 import ViewUsersModal from '../../components/auth/ViewUsersModal';
+import ManageUsersModal from '../../components/auth/ManageUsersModal';
 import ManageRolesModal from '../../components/auth/ManageRolesModal';
 import ManageCoursesModal from '../../components/auth/ManageCoursesModal';
 import GenerateReportsModal from '../../components/auth/GenerateReportsModal';
@@ -47,28 +48,29 @@ function Admin() {
     return (
         <main className={`${styles.authFormWrapper} container`}>
             <div className={`${styles.authFormCard} card mx-auto m-2 p-5`}>
-                <h1>Admin Dashboard</h1>
+                <h1><span className="roboto-bold">Admin Dashboard</span></h1>
                 {userData() ? (
                     <div className="mt-4">
-                        <h2>{`${userData().firstName} ${userData().lastName}`}</h2>
+                        <h2><span className="roboto-bold">{`${userData().firstName} ${userData().lastName}`}</span></h2>
                         <div className="mt-4">
-                            <h3>Admin Actions</h3>
+                            <h3><span className="roboto-bold">Admin Actions</span></h3>
                             <div className="d-flex flex-column gap-2">
-                                <button className={`${styles.viewUsersButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#viewUsersModal" onClick={() => console.log('View Users')}>View Users</button>
-                                <button className={`${styles.manageRolesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageRolesModal" disabled={!authState().user.superAdminTag} onClick={() => console.log('Manage Roles')}>Manage Roles</button>
-                                <button className={`${styles.manageCoursesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageCoursesModal" onClick={() => console.log('View Users')}>Manage Courses</button>
-                                <button className={`${styles.generateReportsButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#generateReportsModal" onClick={() => console.log('Generate Reports')}>Generate Reports</button>
-                                <button className={`${styles.systemSettingsButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#systemSettingsModal" onClick={() => console.log('System Settings')}>System Settings</button>
+                                <button className={`${styles.viewUsersButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#viewUsersModal"><span className="roboto-bold" style={{"text-transform": "uppercase"}}>View Users</span></button>
+                                <button className={`${styles.manageUsersButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageUsersModal" disabled={!authState().user.superAdminTag}><span className="roboto-bold"  style={{"text-transform": "uppercase"}}>Manage Users</span></button>
+                                <button className={`${styles.manageRolesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageRolesModal" disabled={!authState().user.superAdminTag}><span className="roboto-bold"  style={{"text-transform": "uppercase"}}>Manage Roles</span></button>
+                                <button className={`${styles.manageCoursesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageCoursesModal"><span className="roboto-bold" style={{"text-transform": "uppercase"}}>Manage Courses</span></button>
+                                <button className={`${styles.generateReportsButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#generateReportsModal"><span className="roboto-bold" style={{"text-transform": "uppercase"}}>Generate Report</span></button>
                             </div>
                         </div>
                     </div>
                 ) : (
                     <>
-                        {error() && <div className="alert alert-danger">{error()}</div>}
+                        {error() && <div className="alert alert-danger"><span className="roboto-bold">{error()}</span></div>}
                     </>
                 )}
             </div>
             <ViewUsersModal />
+            <ManageUsersModal />
             <ManageRolesModal />
             <ManageCoursesModal />
             <GenerateReportsModal />
