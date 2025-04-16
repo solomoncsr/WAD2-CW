@@ -3,6 +3,12 @@ import { authState } from '../../stores/authStore';
 
 import styles from '../css/auth/AuthForm.module.css';
 
+import ViewUsersModal from '../../components/auth/ViewUsersModal';
+import ManageRolesModal from '../../components/auth/ManageRolesModal';
+import ManageCoursesModal from '../../components/auth/ManageCoursesModal';
+import GenerateReportsModal from '../../components/auth/GenerateReportsModal';
+import SystemSettingsModal from '../../components/auth/SystemSettingsModal';
+
 function Admin() {    
     const [userData, setUserData] = createSignal(null);
     const [error, setError] = createSignal('');
@@ -48,10 +54,11 @@ function Admin() {
                         <div className="mt-4">
                             <h3>Admin Actions</h3>
                             <div className="d-flex flex-column gap-2">
-                                <button className="btn btn-primary" onClick={() => console.log('View Users')}>View Users</button>
-                                <button className="btn btn-secondary" disabled={!authState().user.superAdminTag} onClick={() => console.log('Manage Roles')}>Manage Roles</button>
-                                <button className="btn btn-success" onClick={() => console.log('Generate Reports')}>Generate Reports</button>
-                                <button className="btn btn-warning" onClick={() => console.log('System Settings')}>System Settings</button>
+                                <button className={`${styles.viewUsersButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#viewUsersModal" onClick={() => console.log('View Users')}>View Users</button>
+                                <button className={`${styles.manageRolesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageRolesModal" disabled={!authState().user.superAdminTag} onClick={() => console.log('Manage Roles')}>Manage Roles</button>
+                                <button className={`${styles.manageCoursesButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#manageCoursesModal" onClick={() => console.log('View Users')}>Manage Courses</button>
+                                <button className={`${styles.generateReportsButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#generateReportsModal" onClick={() => console.log('Generate Reports')}>Generate Reports</button>
+                                <button className={`${styles.systemSettingsButton} btn btn-primary`} data-bs-toggle="modal" data-bs-target="#systemSettingsModal" onClick={() => console.log('System Settings')}>System Settings</button>
                             </div>
                         </div>
                     </div>
@@ -61,6 +68,11 @@ function Admin() {
                     </>
                 )}
             </div>
+            <ViewUsersModal />
+            <ManageRolesModal />
+            <ManageCoursesModal />
+            <GenerateReportsModal />
+            <SystemSettingsModal />
         </main>
     );
 }
