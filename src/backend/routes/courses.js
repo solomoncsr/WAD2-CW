@@ -67,4 +67,51 @@ router.post('/:id/enroll', authMiddleware, (req, res) => {
     });
 });
 
+// Create a new course
+router.post('/create', authMiddleware, (req, res) => {
+    const { title, description, instructor, schedule, capacity, price } = req.body;
+    const adminTag = req.user.adminTag;
+
+    if (!adminTag) {
+        return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    const newCourse = {
+        title,
+        description,
+        instructor,
+        schedule,
+        capacity,
+        price,
+        enrolledUsers: [],
+    };
+
+    coursesDb.insert(newCourse, (err, newDoc) => {
+        if (err) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+        res.status(201).json(newDoc);
+    });
+});
+
+// Delete a course
+router.delete('/:id/delete', authMiddleware, (req, res) => {
+    const courseId = req.params.id;
+    const adminTag = req.user.adminTag;
+
+    if (!adminTag) {
+        return res.status(403).json({ error: 'Forbidden' });
+    }
+
+    coursesDb.remove({ _id: courseId }, {}, (err, numRemoved) => {
+        if (err) {
+            return res.status(500).json({ error: 'Internal server error' });
+        }
+        if (numRemoved === 0) {
+            return res.status(404).json({ error: 'Course not found' });
+        }
+        res.status(200).json({ message: 'Course deleted successfully' });
+    });
+});
+
 module.exports = router;
