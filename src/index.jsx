@@ -7,6 +7,7 @@ import { authState } from './stores/authStore';
 import './index.css';
 import './assets/bootstrap/js/bootstrap.bundle.min.js';
 import './assets/bootstrap/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css';
 
 import Home from './pages/Home';
 import Catalogue from './pages/courses/Catalogue';
@@ -17,6 +18,7 @@ import UserProfile from './pages/auth/UserProfile';
 import Admin from './pages/auth/Admin';
 
 import Footer from './components/Footer';
+
 
 const root = document.getElementById('root');
 

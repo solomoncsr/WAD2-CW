@@ -1,7 +1,3 @@
-{"capacity":"15","price":"35","enrolledUsers":[],"_id":"Fb1yUsG6BKUvSomy"}
+{"title":"Breakdancing","description":"Learn breakdancing with John DarkSoul","instructor":"John DarkSoul","schedule":"Tuesday at 5pm","capacity":"12","price":"35","enrolledUsers":[],"_id":"HM5N83CfExeChANw"}
 {"title":"Salsa Basics","description":"Learn the basics of Salsa dancing.","instructor":"John Doe","schedule":"Mondays at 6 PM","price":50,"capacity":20,"enrolledUsers":[],"_id":"ZjLdX4QLrA0K3djk"}
 {"title":"Advanced Tango","description":"Master the art of Tango with advanced techniques.","instructor":"Jane Smith","schedule":"Wednesdays at 7 PM","price":75,"capacity":15,"enrolledUsers":[],"_id":"aGUtSgyeb385S7aI"}
-{"courseName":"Breakdancing","courseDescription":"Learn breakdancing with John Dark Soul","instructorName":"John Dark Soul","courseSchedule":"Tuesdays at 6PM","capacity":"15","price":"35","enrolledUsers":[],"_id":"cfVz5k23rpMZT7Do"}
-{"$$deleted":true,"_id":"cfVz5k23rpMZT7Do"}
-{"title":"Breakdancing","description":"Learn breakdancing with John DarkSoul","instructor":"John DarkSoul","schedule":"Tuesday at 5pm","capacity":"12","price":"35","enrolledUsers":[],"_id":"HM5N83CfExeChANw"}
-{"$$deleted":true,"_id":"Fb1yUsG6BKUvSomy"}
