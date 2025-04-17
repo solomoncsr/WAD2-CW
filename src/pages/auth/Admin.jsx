@@ -4,7 +4,7 @@ import { authState } from '../../stores/authStore';
 import styles from '../css/auth/AuthForm.module.css';
 
 import ViewUsersModal from '../../components/auth/ViewUsersModal';
-import ManageUsersModal from '../../components/auth/ManageRolesModal';
+import ManageUsersModal from '../../components/auth/ManageUsersModal';
 import ManageCoursesModal from '../../components/auth/ManageCoursesModal';
 import GenerateReportModal from '../../components/auth/GenerateReportModal';
 
