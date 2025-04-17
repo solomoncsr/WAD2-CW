@@ -5,10 +5,10 @@ import styles from "../css/Modal.module.css";
 
 function ManageCoursesModal () {
     const [createFormData, setCreateFormData] = createSignal({
-        courseName: '',
-        instructorName: '',
-        courseSchedule: '',
-        courseDescription: '',
+        title: '',
+        instructor: '',
+        schedule: '',
+        description: '',
         capacity: '',
         price: '',
     });
@@ -92,69 +92,69 @@ function ManageCoursesModal () {
                         <h4 className="mb-3">Create a course</h4>
                         <form>
                             <div className="mb-3">
-                                <label htmlFor="courseName" className="form-label">Course Name</label>
+                                <label htmlFor="title" className="form-label">Course Name</label>
                                 <input
                                     type="text"
                                     className="form-control"
-                                    id="courseName"
+                                    id="title"
                                     placeholder="Enter course name"
-                                    value={createFormData().courseName}
-                                    onInput={(e) => setCreateFormData({ ...createFormData(), courseName: e.target.value })}
+                                    value={createFormData().title}
+                                    onInput={(e) => setCreateFormData({ ...createFormData(), title: e.target.value })}
                                 />
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="instructorName" className="form-label">Instructor Name</label>
+                                <label htmlFor="instructor" className="form-label">Instructor Name</label>
                                 <input
                                     type="text"
                                     className="form-control"
-                                    id="instructorName"
+                                    id="instructor"
                                     placeholder="Enter instructor name"
-                                    value={createFormData().instructorName}
-                                    onInput={(e) => setCreateFormData({ ...createFormData(), instructorName: e.target.value })}
+                                    value={createFormData().instructor}
+                                    onInput={(e) => setCreateFormData({ ...createFormData(), instructor: e.target.value })}
                                 />
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="courseSchedule" className="form-label">Schedule ('Day at Time')</label>
+                                <label htmlFor="schedule" className="form-label">Schedule ('Day at Time')</label>
                                 <input
                                     type="text"
                                     className="form-control"
-                                    id="courseSchedule"
+                                    id="schedule"
                                     placeholder="Enter schedule"
-                                    value={createFormData().courseSchedule}
-                                    onInput={(e) => setCreateFormData({ ...createFormData(), courseSchedule: e.target.value })}
+                                    value={createFormData().schedule}
+                                    onInput={(e) => setCreateFormData({ ...createFormData(), schedule: e.target.value })}
                                 />
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="courseCapacity" className="form-label">Capacity</label>
+                                <label htmlFor="capacity" className="form-label">Capacity</label>
                                 <input
                                     type="number"
                                     className="form-control"
-                                    id="courseCapacity"
+                                    id="capacity"
                                     placeholder="Enter capacity"
                                     value={createFormData().capacity}
                                     onInput={(e) => setCreateFormData({ ...createFormData(), capacity: e.target.value })}
                                 />
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="coursePrice" className="form-label">Price</label>
+                                <label htmlFor="price" className="form-label">Price</label>
                                 <input
                                     type="number"
                                     className="form-control"
-                                    id="coursePrice"
+                                    id="price"
                                     placeholder="Enter course price"
                                     value={createFormData().price}
                                     onInput={(e) => setCreateFormData({ ...createFormData(), price: e.target.value })}
                                 />
                             </div>
                             <div className="mb-3">
-                                <label htmlFor="courseDescription" className="form-label">Description</label>
+                                <label htmlFor="description" className="form-label">Description</label>
                                 <textarea
                                     className="form-control"
-                                    id="courseDescription"
+                                    id="description"
                                     rows="3"
                                     placeholder="Enter course description"
-                                    value={createFormData().courseDescription}
-                                    onInput={(e) => setCreateFormData({ ...createFormData(), courseDescription: e.target.value })}
+                                    value={createFormData().description}
+                                    onInput={(e) => setCreateFormData({ ...createFormData(), description: e.target.value })}
                                 ></textarea>
                             </div>
                             <button type="button" className={`${styles.standardButton} btn btn-primary`} onClick={createCourse}>
