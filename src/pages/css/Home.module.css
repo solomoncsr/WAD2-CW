@@ -1,0 +1,84 @@
+.main {
+    max-width: 100vw;           /* Prevent horizontal overflow */
+    overflow-x: hidden;         /* Hide accidental horizontal scroll */
+    padding: 0 0.5rem;            /* Optional: Add padding to avoid hugging edges */
+    box-sizing: border-box;     /* Ensure padding is included in the element's width */
+}
+
+.homeVideo {
+    position: relative;
+    height: 100%; /* Full height of the viewport */
+    max-height: 50vh; /* Maximum height of 50% of the viewport */
+    overflow: hidden; /* Hide overflow to prevent scrollbars */
+    width: 100%;
+    object-fit: cover;
+}
+
+.titleText {
+    z-index: 1000;
+    position: absolute;
+}
+
+.titleSubtext {
+    z-index: 1000; 
+    position: absolute;
+    bottom: 0;
+}
+
+.titleTextContainer {
+    padding: 0;
+}
+
+.displayImg {
+    width: 100%;
+    height: auto;
+    max-height: 30vh; /* Maximum height of 40% of the viewport */
+    object-fit: cover; /* Maintain aspect ratio and cover the container */
+}
+
+.standardButton {
+    background-color: #4CAF50; /* A pleasant green color */
+    color: white; /* White text for contrast */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Slightly rounded corners */
+    padding: 0.75rem 1.5rem; /* Comfortable padding */
+    font-size: 1rem; /* Standard font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+
+    &:hover {
+        background-color: #45a049; /* Darker green on hover */
+        transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+
+    &:active {
+        background-color: #3e8e41; /* Even darker green when clicked */
+        transform: scale(0.95); /* Slightly shrink on click */
+    }
+
+    &:disabled {
+        background-color: #cccccc; /* Gray color for disabled state */
+        cursor: not-allowed; /* Not-allowed cursor for disabled state */
+        opacity: 0.6; /* Reduced opacity for disabled state */
+    }
+}
+
+.subtitle {
+    font-size: 1.75rem; /* Default font size for larger screens */
+    color: black; /* White text color */
+    text-align: center; /* Centered text */
+    margin: 0; /* Remove default margin */
+    padding: 0.5rem; /* Optional padding for spacing */
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .titleTextContainer {
+        height: 25vh; /* Adjust height for smaller screens */
+        max-height: 25vh; /* Maximum height of 25% of the viewport */
+    }
+    
+    .titleSubtext {
+        font-size: 1.11rem !important; /* Adjust font size for smaller screens */
+    }
+}

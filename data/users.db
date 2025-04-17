@@ -1,0 +1,4 @@
+{"firstName":"ESOD","lastName":"ADMIN","email":"ADMIN@ESOD","password":"$2b$10$4k8zt2zHYJsfAfAulWMzv.ybh/nKa5qyvRMnbjA6tZm27FYKdANNm","adminTag":true,"superAdminTag":true,"createdAt":{"$$date":1744487986625},"_id":"ZdKmGA6ErkXy9M4T"}
+{"firstName":"Saul","lastName":"ADMIN","email":"sauladmin@email.com","password":"$2b$10$ONJepnATOZJUQT95cuduCuFhExqQDgggT8SPfvNwHchLWMGqW4ny.","adminTag":true,"superAdminTag":false,"createdAt":{"$$date":1744807850479},"_id":"egJprbXSa21gINYb"}
+{"firstName":"Saul","lastName":"Mackenzie","email":"saul@gmail.com","password":"$2b$10$Xhrrg7iQH.U/nwJmuIBpxOX.gAvSptSyVZ1ob1xRGUpudE47.3loC","adminTag":false,"superAdminTag":false,"createdAt":{"$$date":1744562197131},"_id":"tjvjL5JFOXkysw2B"}
+{"firstName":"test","lastName":"test","email":"test@test","password":"$2b$10$89QyH6z.d0Vj2UQXP8NeKeGKLSBzZtn2vyjHqyILY4/dvRGzLaoBe","adminTag":false,"superAdminTag":false,"createdAt":{"$$date":1744822586349},"_id":"uU7CVHF2577P5EhR"}

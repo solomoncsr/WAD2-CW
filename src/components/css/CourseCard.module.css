@@ -1,0 +1,41 @@
+.courseCard {
+    width: 30rem;
+    height: 25rem;
+    border-radius: 0px;
+    border: transparent;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.175);
+    padding: 1rem; /* Padding for the card content */
+}
+
+.standardButton {
+    background-color: #4CAF50; /* A pleasant green color */
+    color: white; /* White text for contrast */
+    border: none; /* Remove default border */
+    border-radius: 5px; /* Slightly rounded corners */
+    padding: 0.75rem 1.5rem; /* Comfortable padding */
+    font-size: 1rem; /* Standard font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+
+    &:hover {
+        background-color: #45a049; /* Darker green on hover */
+        transform: scale(1.05); /* Slightly enlarge on hover */
+    }
+
+    &:active {
+        background-color: #3e8e41; /* Even darker green when clicked */
+        transform: scale(0.95); /* Slightly shrink on click */
+    }
+
+    &:disabled {
+        background-color: #cccccc; /* Gray color for disabled state */
+        cursor: not-allowed; /* Not-allowed cursor for disabled state */
+        opacity: 0.6; /* Reduced opacity for disabled state */
+    }
+}
+
+@media (max-width: 768px) {
+    .courseCard {
+        width: 100%;
+    }
+}
